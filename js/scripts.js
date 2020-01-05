@@ -1,7 +1,7 @@
 var pokemonRepository = (function(){
   var repository = [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-  var $modalContainer = $('#modal-container');
+  var $modalContainer = $('.modal-container');
 
   function getAll(){
     return repository;
@@ -43,56 +43,32 @@ var pokemonRepository = (function(){
   }
 
   function addListItem(pokemon){
-    var $pokemonList = $('.pokemon-list');
-    var $listItem = $('<li></li>');
-    var button = $('<button class="pokemon-button">'+pokemon.name+'</button>');
-    $listItem.append(button);
-    $pokemonList.append($listItem)
+    var $pokemonList = $('.list-group');
+    var button = $('<button type="button" class="btn btn-outline-success list-group-item" data-toggle="modal" data-target="#pokemonModal">'+pokemon.name+'</button>');
+    $pokemonList.append(button)
+    button.addClass(pokemon.name)
 
     button.on('click', function(event){
-      console.log('hello')
       showDetails(pokemon);
     });
   }
-
-  function showModal(img, name, height) {
-    $modalContainer
-    .empty()
-    .append('<div class="modal"></div>');
-
-    // Add the new modal content
-    $('.modal')
-    .append('<button class="modal-close">Close</button>')
-    .append('<img src="'+img+'"></img>')
-    .append('<h>'+name+'</h1>')
-    .append('<p>Height =  '+height+'</p>');
-
-    $('.modal-close').on('click', hideModal);
-
-
-    $modalContainer.addClass('is-visible');
-  }
-
-  function hideModal() {
-    $modalContainer.removeClass('is-visible')
-  }
-
-  $(window).on('keydown', (e) => {
-    if (e.key === 'Escape' && $modalContainer.hasClass('is-visible')) {
-      hideModal();
-    };
-  })
-
-  $(window).on('click', (e) => {
-    if ($(e.target).closest($modalContainer).hasClass('is-visible')) {
-      hideModal();
-    };
-  })
 
   function showDetails(item) {
     loadDetails(item).then(function () {
     showModal(item.imageUrl, item.name, item.height);     });
 }
+
+  function showModal(img, name, height) {
+    //Modal Title
+    $('.modal-title').text(name);
+
+    // Add the new modal content
+    $modalContainer
+    .empty()
+    .append('<img src="'+img+'"></img>')
+    .append('<p>Height =  '+height+'</p>');
+  }
+
 
 
  return {
