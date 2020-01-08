@@ -7,6 +7,16 @@ var pokemonRepository = (function(){
     return repository;
   }
 
+  //Search
+  $(document).ready(function() {
+    $('.form-control').on('keyup', function() {
+      var value = $(this).val().toLowerCase();
+      $('.list-group button').filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+  });
+
   function add(item){
     if(typeof(item) !== 'object') {
       alert(item + 'is not an object');
