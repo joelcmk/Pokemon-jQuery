@@ -4,7 +4,7 @@ var pokemonRepository = (function(){
   var $modalContainer = $('.modal-container');
 
   function getAll(){
-    return repository; 
+    return repository;
   }
 
 
@@ -38,6 +38,7 @@ var pokemonRepository = (function(){
         add(pokemon);
       });
     }).catch(function(e) {
+      /* eslint-disable no-console */
       console.error(e);
     })
   }
