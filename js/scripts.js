@@ -7,6 +7,7 @@ var pokemonRepository = (function(){
     return repository;
   }
 
+
   //Search
   $(document).ready(function() {
     $('.form-control').on('keyup', function() {
@@ -37,6 +38,7 @@ var pokemonRepository = (function(){
         add(pokemon);
       });
     }).catch(function(e) {
+      /* eslint-disable no-console */
       console.error(e);
     })
   }
@@ -58,7 +60,7 @@ var pokemonRepository = (function(){
     $pokemonList.append(button)
     button.addClass(pokemon.name)
 
-    button.on('click', function(event){
+    button.on('click', function(){
       showDetails(pokemon);
     });
   }
