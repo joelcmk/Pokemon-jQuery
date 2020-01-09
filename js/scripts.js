@@ -4,8 +4,9 @@ var pokemonRepository = (function(){
   var $modalContainer = $('.modal-container');
 
   function getAll(){
-    return repository;
+    return repository; 
   }
+
 
   //Search
   $(document).ready(function() {
@@ -58,7 +59,7 @@ var pokemonRepository = (function(){
     $pokemonList.append(button)
     button.addClass(pokemon.name)
 
-    button.on('click', function(event){
+    button.on('click', function(){
       showDetails(pokemon);
     });
   }
