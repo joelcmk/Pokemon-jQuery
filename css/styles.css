@@ -1,8 +1,24 @@
 .list-group {
-  width: 200px;
-  margin: 0 auto;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list-group-item {
+  width: 33%;
 }
 
 .modal-container {
   margin: 0 auto;
+}
+
+@media only screen
+and (min-width: 360px)
+and (max-width: 640px) {
+  .list-group {
+    flex-direction: column;
+  }
+  .list-group-item {
+    width: 100%;
+  }
 }
