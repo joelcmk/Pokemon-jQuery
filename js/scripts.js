@@ -18,6 +18,15 @@ var pokemonRepository = (function(){
     });
   });
 
+  $('.form-control').on('search', function() {
+    if($(this).val().lenght > 0) {
+      // the search is being executed
+     }else {
+      $('.form-control').val('');
+      $('.form-control').trigger('keyup');
+    }
+  });
+
   function add(item){
     if(typeof(item) !== 'object') {
       alert(item + 'is not an object');
@@ -58,7 +67,6 @@ var pokemonRepository = (function(){
     var $pokemonList = $('.list-group');
     var button = $('<button type="button" class="btn btn-outline-success list-group-item" data-toggle="modal" data-target="#pokemonModal">'+pokemon.name+'</button>');
     $pokemonList.append(button)
-    button.addClass(pokemon.name)
 
     button.on('click', function(){
       showDetails(pokemon);
